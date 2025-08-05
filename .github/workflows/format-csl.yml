@@ -1,4 +1,4 @@
-name: "Format & Check XML with Prettier"
+name: "Format & Check CSL with Prettier"
 
 on:
   push:
@@ -24,9 +24,8 @@ jobs:
 
       - name: Run Prettier write for CSL files
         run: |
-          npx -y prettier@3 \
-            --plugin=@prettier/plugin-xml \
-            --write "**/*.csl"
+          npm install --no-save prettier@3 @prettier/plugin-xml
+          npx prettier --plugin=@prettier/plugin-xml --write "**/*.csl"
 
       - name: Commit formatted files
         uses: stefanzweifel/git-auto-commit-action@v4
